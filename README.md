@@ -59,3 +59,9 @@ It prints the mint address and a Solana Explorer (devnet) link when done.
 - Add a `collection` NFT so all batch passports are grouped and verifiable as one series.
 - Attach the passport mint address to the product's physical packaging (QR code) so a buyer
   can scan and verify on-chain before purchase.
+
+## Live on devnet — video edition (06.10.2026)
+Mint: FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS
+Explorer: https://explorer.solana.com/address/FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS?cluster=devnet
+Solscan: https://solscan.io/token/FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS?cluster=devnet
+BHUMI token mint: 5Jj9kxjcmfXbQU5RrXdBA7ZCyp7NuKs5vaYAihnyb8TJ
