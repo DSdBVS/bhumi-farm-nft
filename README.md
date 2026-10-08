@@ -54,3 +54,33 @@ Batch Passport webpage
 Traceability information
 ↓
 Solana Devnet NFT
+
+The QR code is the web entry point. It opens the Batch Passport, which presents
+the human-readable batch information and provides access to the corresponding
+on-chain NFT.
+
+## What's in this repo
+
+| File | Purpose |
+|---|---|
+| `mint-bhumi-passport-0001A.mjs` | Current NFT minting script using the Bhumi Farm logo as passport artwork. |
+| `mint-bhumi-passport.mjs` | Earlier mint implementation kept for reference. |
+| `bhumi_logo_clean.png` | Bhumi Farm logo used as passport artwork. |
+| `package.json` | Project dependencies. |
+
+## Technical Stack
+
+- **Solana Devnet** — blockchain network
+- **Metaplex Umi** — Solana NFT tooling
+- **mpl-token-metadata** — NFT metadata and Token Metadata standard
+- **Irys** — storage for NFT image and metadata JSON
+
+## Running it yourself
+
+Requires a funded Solana Devnet keypair.
+
+The wallet/keypair is stored locally and is not included in this repository.
+
+```bash
+npm install
+node mint-bhumi-passport-0001A.mjs
