@@ -1,67 +1,86 @@
-# Bhumi Farm — On-Chain Traceability Passport (NFT)
+# Bhumi Farm — On-Chain Traceability Passport
 
-Part of Bhumi Farm's submission to the Colosseum Crypto World's Fair 2026 (Solana track).
+A Solana-based traceability passport for Bhumi Farm production batches, connecting
+physical food products to human-readable batch records and verifiable on-chain NFTs.
 
-## What this is
+[Live Demo](https://bhumifarm.com/passport.html) ·
+[Solana Explorer](https://explorer.solana.com/address/FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS?cluster=devnet) ·
+[Bhumi Farm](https://bhumifarm.com)
 
-Bhumi Farm is building a fully enclosed, biosecure indoor frog farm in Thailand, producing
-smoked frog legs as a verifiable, traceable RWA product. This repo mints an **on-chain
-traceability passport** — a Metaplex NFT that carries the full production record for one
-batch directly in its metadata: species, facility, biosecurity screening results (qPCR),
-mortality vs. benchmark, feed source, and product form.
+## What it is
 
-The idea: every real production batch gets one of these NFTs, minted at harvest, so a buyer
-or auditor can verify the batch's record on-chain instead of trusting a claim on a label.
+Bhumi Farm is developing a fully enclosed, biosecure indoor frog farm in Thailand,
+with Bhumi Food as the consumer-facing food brand.
 
-**This repo currently mints sample/demo data**, clearly marked as such in every record's
-metadata (`"Record Type": "DEMO — Sample Data"`). It demonstrates the exact data structure
-and mint flow the real system will use once the farm is operational — it is not a claim that
-any physical batch behind these NFTs exists yet.
+This repository implements an on-chain traceability passport using a Metaplex NFT
+on Solana. The passport represents the production record for a batch and can contain
+information such as species, facility, biosecurity screening, mortality, feed source,
+and product form.
 
-## Live example (Solana Devnet)
+The current implementation is a **Solana Devnet prototype using sample/demo data**.
+The farm and production facility are planned and the current NFT does not represent
+a real commercial production batch.
 
-- Mint: [`FcKrpvFRjxDHV39P9ZJzVHeumb56ZK4TQRkQL6fvwePA`](https://explorer.solana.com/address/FcKrpvFRjxDHV39P9ZJzVHeumb56ZK4TQRkQL6fvwePA?cluster=devnet)
-- Name: `Bhumi Passport 0001A`
-- Standard: Metaplex Token Metadata (Master Edition, supply 1)
+## Live Demo
+
+**Batch Passport:** https://bhumifarm.com/passport.html
+
+- **Batch:** `BHF-2026-0091`
+- **Product:** Smoked Frog Legs
+- **Species:** `Hoplobatrachus rugulosus`
+- **Network:** Solana Devnet
+- **NFT:** `FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS`
+
+The physical product demonstration uses a QR code that opens the Batch Passport.
+The passport presents the batch information and links to the corresponding Solana
+Devnet NFT.
+
+### Current demo NFT
+
+**Mint:** `FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS`
+
+[View on Solana Explorer](https://explorer.solana.com/address/FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS?cluster=devnet)
+
+[View on Solscan](https://solscan.io/token/FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS?cluster=devnet)
+
+## How it works
+
+Physical product
+↓
+QR code
+↓
+Batch Passport webpage
+↓
+Traceability information
+↓
+Solana Devnet NFT
+
+The QR code is the web entry point. It opens the Batch Passport, which presents
+the human-readable batch information and provides access to the corresponding
+on-chain NFT.
 
 ## What's in this repo
 
 | File | Purpose |
 |---|---|
-| `mint-bhumi-passport-0001A.mjs` | Current mint script — uploads the real Bhumi Farm logo as the passport image, then mints the NFT. This produced the example above. |
-| `mint-bhumi-passport.mjs` | Earlier version — uses a placeholder image URL instead of the real logo. Kept for reference. |
-| `bhumi_logo_clean.png` | Bhumi Farm logo, used as the passport artwork. |
-| `package.json` | Dependencies (Metaplex `umi` stack). |
+| `mint-bhumi-passport-0001A.mjs` | Current NFT minting script using the Bhumi Farm logo as passport artwork. |
+| `mint-bhumi-passport.mjs` | Earlier mint implementation kept for reference. |
+| `bhumi_logo_clean.png` | Bhumi Farm logo used as passport artwork. |
+| `package.json` | Project dependencies. |
 
-## Stack
+## Technical Stack
 
-- [Metaplex Umi](https://developers.metaplex.com/umi) + [`mpl-token-metadata`](https://developers.metaplex.com/token-metadata) — NFT creation (`createNft`)
-- [Irys uploader](https://developers.metaplex.com/umi/uploaders) — decentralized storage for the image + metadata JSON
-- Solana Devnet
+- **Solana Devnet** — blockchain network
+- **Metaplex Umi** — Solana NFT tooling
+- **mpl-token-metadata** — NFT metadata and Token Metadata standard
+- **Irys** — storage for NFT image and metadata JSON
 
 ## Running it yourself
 
-Requires a funded Solana devnet keypair. The script reads it from a local file path
-(not committed to this repo — see `mint-bhumi-passport-0001A.mjs`, top of file, for the
-expected path) via `solana-keygen new` / an existing devnet wallet JSON.
+Requires a funded Solana Devnet keypair.
+
+The wallet/keypair is stored locally and is not included in this repository.
 
 ```bash
 npm install
 node mint-bhumi-passport-0001A.mjs
-```
-
-It prints the mint address and a Solana Explorer (devnet) link when done.
-
-## Roadmap
-
-- Wire this mint flow into the Bhumi Farm dashboard so a passport mints automatically at
-  batch harvest, pulling real qPCR/biosecurity data instead of sample values.
-- Add a `collection` NFT so all batch passports are grouped and verifiable as one series.
-- Attach the passport mint address to the product's physical packaging (QR code) so a buyer
-  can scan and verify on-chain before purchase.
-
-## Live on devnet — video edition (06.10.2026)
-Mint: FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS
-Explorer: https://explorer.solana.com/address/FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS?cluster=devnet
-Solscan: https://solscan.io/token/FxoSBXSasQ8EsE4knjxFQQGpuU5G7Zefhdi3vN9cDXxS?cluster=devnet
-BHUMI token mint: 5Jj9kxjcmfXbQU5RrXdBA7ZCyp7NuKs5vaYAihnyb8TJ
